@@ -28,7 +28,7 @@ module tft_ili9341(
 	// Init Sequence Data (based upon https://github.com/notro/fbtft/blob/master/fb_ili9341.c)
 	localparam INIT_SEQ_LEN = 64;
 	reg[6:0] initSeqCounter = 7'b0;
-	reg[8:0] INIT_SEQ [0:INIT_SEQ_LEN-1] = '{
+	reg[8:0] INIT_SEQ [0:INIT_SEQ_LEN-1] = {
 		// Turn off Display
 		{1'b0, 8'h28},
 		// Init (??)

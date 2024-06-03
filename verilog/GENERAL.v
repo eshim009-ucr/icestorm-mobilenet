@@ -279,7 +279,7 @@ always @(posedge CLOCK_50 or negedge KEY[0])
 	end
 assign addr_tft = x_tft + y_tft*320;
 
-serialGPIO(
+serialGPIO gpio(
     .clk25		(clk25),
     .RxD			(UART_RX),
     .TxD			(UART_TX),
