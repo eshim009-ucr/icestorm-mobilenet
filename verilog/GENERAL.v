@@ -1,5 +1,5 @@
 module GENERAL(
-input CLOCK_50,
+input CLOCK_25,
 
 //////////// ILI9341 //////////////
 
@@ -99,7 +99,7 @@ assign test_start_n         =(sample[4:3]==2'b01)?1'b0:1'b1;
 //////////////////////////////////////////////////
 pll_24_100 pll_24_100
 (
-	.refclk	(CLOCK_50),
+	.refclk	(CLOCK_25),
 	.rst		(1'b0/*~rst_n*/),
 	.locked	(),
 			
@@ -107,6 +107,13 @@ pll_24_100 pll_24_100
 	.outclk_1      (clk100),               //100Mhz
 	.outclk_2		(clk60)
 
+);
+clk_div #(
+	.FREQ_IN(100),
+	.FREQ_OUT(50)
+) div2 (
+	.clk_in(clk100),
+	.clk_out(CLOCK_50)
 );
 
 always @(posedge CLOCK_50 or negedge KEY[0]) 

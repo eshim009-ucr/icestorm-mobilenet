@@ -66,7 +66,7 @@ module tft_ili9341(
 	
 	// state machine with delay + idle support (used for initialization)
 	reg[23:0] remainingDelayTicks = 24'b0;
-	enum logic[2:0] { START, HOLD_RESET, WAIT_FOR_POWERUP, SEND_INIT_SEQ, LOOP} state = START;
+	enum logic[2:0] {START, HOLD_RESET, WAIT_FOR_POWERUP, SEND_INIT_SEQ, LOOP} state = 2'b00;
 	always @ (posedge clk) begin
 		// clear data flag first
 		spiDataSet <= 1'b0; 
